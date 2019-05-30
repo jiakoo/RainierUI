@@ -10,27 +10,35 @@
 <body>
     <div style="margin:15px;">
          <!-- // checkbox-checked -->
+        <label class="checkbox-warp"> 
+            <span  class="checkbox-box">
+                <input type="checkbox"  class="checkbox-original" name="aa" value="">
+                <span class="checkbox-inner"></span>               
+            </span>
+            <span class="checkbox-label">未选中</span>
+        </label>
+        <label class="checkbox-warp"> 
+            <span  class="checkbox-box">
+                <input type="checkbox"  class="checkbox-original" checked name="aa" value="">
+                <span class="checkbox-inner"></span>               
+            </span>
+            <span class="checkbox-label">选中</span>
+        </label>
+        <label class="checkbox-warp checkbox-disabled"> 
+            <span  class="checkbox-box">
+                <input type="checkbox" class="checkbox-original" disabled  name="aa" value="">
+                <span class="checkbox-inner"></span>               
+            </span>
+            <span class="checkbox-label">未选中选中禁用</span>
+        </label>
         <label class="checkbox-warp checkbox-disabled"> 
             <span  class="checkbox-box">
                 <input type="checkbox" class="checkbox-original" disabled checked name="aa" value="">
                 <span class="checkbox-inner"></span>               
             </span>
-            <!-- <span class="checkbox-label">备选项</span> -->
+            <span class="checkbox-label">选中禁用</span>
         </label>
-        <label class="checkbox-warp"> 
-            <span  class="checkbox-box">
-                <input type="checkbox"  class="checkbox-original" name="aa" value="">
-                <span class="checkbox-inner"></span>               
-            </span>
-            <!-- <span class="checkbox-label">备选项</span> -->
-        </label>
-        <label class="checkbox-warp"> 
-            <span  class="checkbox-box">
-                <input type="checkbox"  class="checkbox-original" name="aa" value="">
-                <span class="checkbox-inner"></span>               
-            </span>
-            <!-- <span class="checkbox-label">备选项</span> -->
-        </label>
+
     </div>
 </body>
 </html>
