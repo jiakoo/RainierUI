@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../common/common.css">
+    <style>
+        body{
+            margin: 15px;
+        }
+        p{
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3 style="margin-bottom:15px">基础单选类</h3>
+        <label tabindex="0" class="radio-warp" >
+            <span class="radio-box">
+                <input type="radio"  tabindex="-1" class="radio-original" name="aa" value="1">
+                <span class="radio-inner"></span>               
+            </span>
+            <span class="radio-label">
+                备选项1
+            </span>
+        </label>
+
+        <div style="margin:15px">
+            <radio class="radio-border" name="aa" value="1">备选项1</radio>
+            <radio class="radio-disabled" name="aa" value="1" disabled checked>备选项1</radio>
+            <radio name="aa" value="1" >备选项3</radio>         
+        </div>
+    </div>
+ <div>
+<p>使用方式：</p>
+<p>方式1：简化标签使用</p>
+<xmp><radio name="aa" value="name1" checked="true">备选项1</radio>
+<radio name="aa">备选项2</radio>
+</xmp>
+ <p>name   value 选项可选择</p>
+ <p>disabled:RainierUi.radiodisabeld(document.querySelectorAll('radio')[1],false);</p>
+ <p>方式2：兼容调用方式 </p>
+ <p>.radio-warp .radio-disabled 禁用样式</p>
+<xmp><label tabindex="0" class="radio-warp radio-disabled" >
+    <span class="radio-box"> 
+        <span class="radio-inner"></span>
+        <input type="radio"  tabindex="-1" class="radio-original" name="aa" value="2">
+    </span>
+    <span class="radio-label">备选项2</span>
+</label>
+</xmp>
+
+</div>   
+</body>
+</html>
+<script src="../common/common.js"></script>
