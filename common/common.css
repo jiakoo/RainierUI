@@ -1,0 +1,21 @@
+/*按钮*/
+@import "../button/button.css";
+
+/*radio*/
+@import "../radio/radio.css";
+
+/*text*/
+@import "../Text/text.css";
+
+/*checkbox*/
+@import "../checkbox/checkbox.css";
+
+/*switch*/
+@import "../switch/switch.css";
+
+/*rest*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
