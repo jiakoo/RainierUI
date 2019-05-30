@@ -1,7 +1,8 @@
 ﻿# RainierUI
-方便无前端框架直接使用的ui组件 （借鉴饿了么）
+方便无前端框架直接使用的ui组件 （借鉴饿了么） ：
 ![Image text](./readme/input.gif)
 第一版包括：
+
 ## switch （选择）组件 ：
 ![Image text](./readme/switch0.png)
 ![Image text](./readme/switch.png)
