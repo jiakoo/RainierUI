@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<style>
+		*{
+			margin: 0;
+			padding:0;
+		}
+		.range{
+			width: 100%;
+		    height: 6px;
+		    margin: 16px 0;
+		    background-color: #e4e7ed;
+		    border-radius: 3px;
+		    position: relative;
+		    cursor: pointer;
+		    vertical-align: middle;
+		    width: 500px;
+		    margin: 50px auto;
+		}
+		.range-bar{
+		    height: 6px;
+		    background-color: #409eff;
+		    border-top-left-radius: 3px;
+		    border-bottom-left-radius: 3px;
+		    position: absolute;
+		}
+		.range-button{
+		    height: 36px;
+		    width: 36px;
+		    position: absolute;
+		    z-index: 1001;
+		    top: -15px;
+		    transform: translateX(-50%);
+		    background-color: transparent;
+		    text-align: center;
+		    user-select: none;
+		    line-height: normal;
+		    outline: none;
+		}
+		.range-button-ele{
+	    	width: 16px;
+		    height: 16px;
+		    border: 2px solid #409eff;
+		    background-color: #fff;
+		    border-radius: 50%;
+		    transition: .2s;
+		    user-select: none;
+	        display: inline-block;
+    		vertical-align: middle;
+    		outline: none;
+		}
+		.range-button:after {
+		    display: inline-block;
+		    vertical-align: middle;
+		    content: "";
+		    height: 100%;
+		}
+		.range-button-ele:hover{
+	    	transform: scale(1.2);
+		}
+		.rang-num{
+			background: #303133;
+    		color: #fff;
+			position: absolute;
+			top:-45px;
+			left: 0;
+			transform: translateX(-50%);
+			border-radius: 4px;
+			padding: 10px;
+			z-index: 2000;
+			font-size: 12px;
+			line-height: 1.2;
+			min-width: 10px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="range">
+		<div class="range-bar"></div>
+		<div class="range-button" tabindex="0">
+			<div class="range-button-ele" tabindex="0"></div>
+		</div>
+		<div class="rang-num">
+			<span>0</span>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+
+	$(function(){
+
+		var RangeBar = $('.range-bar'),
+			RangeBtn = $('.range-button'),
+			Range = $('.range'),
+			RangeW = Range.width(),
+			release = true,
+			RangeNum = $('.rang-num').find('span');
+
+		RangeBtn.mousedown(function(e){
+			$('html').mousemove(function(e){
+				release = false;
+				move.call(this,e);
+			})
+		})
+		RangeBtn.hover(function(){
+			$('.rang-num').show();
+		},function(){
+			if(release){
+				$('.rang-num').hide();
+			}
+		})
+
+		$('html').mouseup(function(){
+			release = true;
+			$('html').unbind("mousemove");
+			$('.rang-num').hide();
+		})
+
+		function move(e){
+			var dis = e.pageX - Range[0].offsetLeft;
+			if(dis<0){dis = 0}
+			if(dis>RangeW){dis=RangeW}
+			RangeBtn[0].style.left = dis +'px';
+			RangeBtn.prev('.range-bar')[0].style.width = dis + 'px';
+			$('.rang-num')[0].style.left = dis+'px';
+			RangeNum.html(parseInt((dis/RangeW)*100));
+		}
+
+	})
+
+ </script>
+
+<script>
+// (function() { !
+//     function(t) {
+//         var e;
+//         return e = function() {
+//             function e(e, i) {
+//                 var s, o, r, l, n, h, u, a, b, m, d;
+//                 this.element = e,
+//                 this.element.hide(),
+//                 this.min = null != (s = this.element.attr("min")) ? s: i.min,
+//                 this.max = null != (o = this.element.attr("max")) ? o: i.max,
+//                 this.step = null != (l = this.element.attr("step")) ? l: i.step,
+//                 this.value = null != (n = this.element.attr("value")) ? n: (i.max - i.min) / 2 + i.min,
+//                 this.decimals = null != (h = this.element.data("decimals")) ? h: i.decimals,
+//                 this.prefix = null != (u = this.element.data("prefix")) ? u: i.prefix,
+//                 this.postfix = null != (a = this.element.data("postfix")) ? a: i.postfix,
+//                 this.color = null != (b = this.element.data("color")) ? b: i.color,
+//                 this.bgColor = null != (m = this.element.data("bg-color")) ? m: i.bgColor,
+//                 this.bubbleColor = null != (d = this.element.data("bubble-color")) ? d: i.bubbleColor,
+//                 this.bubbleBgColor = null != (r = this.element.data("bubble-bg-color")) ? r: i.bubbleBgColor,
+//                 this.min = parseFloat(this.removeCommas(this.min)),
+//                 this.max = parseFloat(this.removeCommas(this.max)),
+//                 this.step = parseFloat(this.removeCommas(this.step)),
+//                 this.value = parseFloat(this.removeCommas(this.value)),
+//                 this.decimals = parseFloat(this.removeCommas(this.decimals)),
+//                 this.slider = t("
+// <div>").addClass("bubble-slider-wrap").insertAfter(this.element),
+//                 this.minus = t("
+//     <div><span>-</span></div>").addClass("bubble-slider-minus").appendTo(this.slider),
+//                 this.plus = t("
+//     <div><span>+</span></div>").addClass("bubble-slider-plus").appendTo(this.slider),
+//                 this.track = t("
+//     <div>").addClass("bubble-slider-track").appendTo(this.slider),
+//                 this.thumb = t("
+//         <div>").addClass("bubble-slider-thumb").appendTo(this.track),
+//                 this.bubble = t("
+//             <div><span>").addClass("bubble-slider-bubble").appendTo(this.thumb),
+//                 this.bubbleArrow = t("<div>").addClass("bubble-slider-bubble-arrow").prependTo(this.bubble),
+//                 this.color && (this.minus.css("color", this.color), this.plus.css("color", this.color), this.thumb.css("background", this.color)),
+//                 this.bgColor && (this.minus.css("border-color", this.bgColor), this.plus.css("border-color", this.bgColor), this.track.css("background", this.bgColor)),
+//                 this.bubbleColor && this.bubble.children("span").first().css("color", this.bubbleColor),
+//                 this.bubbleBgColor && (this.bubbleArrow.css("background", this.bubbleBgColor), this.bubble.children("span").first().css("background", this.bubbleBgColor)),
+//                 this.dragging = !1,
+//                 this.limit = 1e3,
+//                 this.thumbOffset = this.thumb.outerWidth() / 2,
+//                 this.bubbleNumber = this.bubble.find("span").first(),
+//                 this.setValue(this.value),
+//                 this.positionThumb(this.value),
+//                 this.thumb.css("-ms-touch-action", "none"),
+//                 this.thumb.on("mousedown touchstart",
+//                 function(t) {
+//                     return function(e) {
+//                         return t.dragging ? void 0 : (e.preventDefault(), t.dragging = !0)
+//                     }
+//                 } (this)),
+//                 t("html").on("mousemove touchmove",
+//                 function(t) {
+//                     return function(e) {
+//                         return t.dragging ? (e.preventDefault(), "touchmove" === e.type ? t.dragThumb(e.originalEvent.touches[0].pageX) : t.dragThumb(e.originalEvent.pageX)) : void 0
+//                     }
+//                 } (this)).on("mouseup touchend",
+//                 function(t) {
+//                     return function(e) {
+//                         return t.dragging ? (e.preventDefault(), t.dragging = !1) : void 0
+//                     }
+//                 } (this)),
+//                 this.minus.on("click",
+//                 function(t) {
+//                     return function(e) {
+//                         var i;
+//                         return e.preventDefault(),
+//                         i = t.value - t.step,
+//                         i = Math.max(t.min, i),
+//                         t.setValue(i),
+//                         t.positionThumb(i)
+//                     }
+//                 } (this)),
+//                 this.plus.on("click",
+//                 function(t) {
+//                     return function(e) {
+//                         var i;
+//                         return e.preventDefault(),
+//                         i = t.value + t.step,
+//                         i = Math.min(t.max, i),
+//                         t.setValue(i),
+//                         t.positionThumb(i)
+//                     }
+//                 } (this)),
+//                 t(window).on("resize onorientationchange",
+//                 function(t) {
+//                     return function() {
+//                         return t.positionThumb(t.value)
+//                     }
+//                 } (this))
+//             }
+//             return e.prototype.dragThumb = function(t) {
+//                 var e, i, s;
+//                 return i = this.track.offset().left + this.thumbOffset,
+//                 e = this.track.offset().left + this.track.outerWidth() - this.thumbOffset,
+//                 s = Math.max(i, t),
+//                 s = Math.min(e, s),
+//                 this.setValue(this.calcValue()),
+//                 this.thumb.offset({
+//                     left: s - this.thumbOffset
+//                 })
+//             },
+//             e.prototype.calcValue = function() {
+//                 var t;
+//                 return t = this.normalize(this.thumb.position().left, 0, this.track.outerWidth() - 2 * this.thumbOffset),
+//                 t * (this.max - this.min) + this.min
+//             },
+//             e.prototype.setValue = function(t) {
+//                 var e;
+//                 return this.value = Math.round((t - this.min) / this.step) * this.step + this.min,
+//                 this.element.val(this.value),
+//                 e = this.prefix + this.addCommas(this.value.toFixed(this.decimals)) + this.postfix,
+//                 this.bubbleNumber.text(e)
+//             },
+//             e.prototype.positionThumb = function(t) {
+//                 var e;
+//                 return e = this.normalize(t, this.min, this.max),
+//                 this.thumb.offset({
+//                     left: Math.round(e * (this.track.outerWidth() - 2 * this.thumbOffset) + this.track.offset().left)
+//                 })
+//             },
+//             e.prototype.normalize = function(t, e, i) {
+//                 return (t - e) / (i - e)
+//             },
+//             e.prototype.addCommas = function(t) {
+//                 return t.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")
+//             },
+//             e.prototype.removeCommas = function(t) {
+//                 return t.toString().replace(/,/g, "")
+//             },
+//             e
+//         } (),
+//         t.fn.bubbleSlider = function(i) {
+//             var s, o;
+//             return s = {
+//                 min: 0,
+//                 max: 100,
+//                 step: 1,
+//                 value: 50,
+//                 decimals: 0,
+//                 prefix: "",
+//                 postfix: "",
+//                 color: "",
+//                 bgColor: "",
+//                 bubbleColor: "",
+//                 bubbleBgColor: ""
+//             },
+//             o = t.extend({},
+//             s, t.fn.bubbleSlider.defaults, i),
+//             new e(t(this), o)
+//         },
+//         t(function() {
+//             return t(".bubble-slider").each(function() {
+//                 return t(this).bubbleSlider()
+//             })
+//         })
+//     } (this.jQuery)
+// }).call(this);
+</script>

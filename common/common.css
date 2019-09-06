@@ -13,6 +13,19 @@
 /*switch*/
 @import "../switch/switch.css";
 
+/* progress */
+@import "../progress/progress.css";
+
+/* steps */
+@import "../steps/steps.css";
+
+/* rate */
+@import '../rate/rate.css';
+
+/* fontawesome  */
+@import '../font-awesome-4.7.0/css/font-awesome.min.css';
+
+
 /*rest*/
 * {
     margin: 0;

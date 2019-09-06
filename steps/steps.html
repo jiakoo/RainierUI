@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../common/common.css">
+    <link rel="stylesheet" href="steps.css">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <div style="margin: 15px"></div>
+    <div class="steps-warp" id="step1" active="1">
+
+        <div class="steps-box">
+            <div class="steps-warp-head">
+                <div class="steps-warp-line">
+                    <i class="steps-warp-line-inner"></i>
+                </div>
+                <div class="steps-warp-iconortext">1</div>
+            </div>
+            <div class="steps-warp-main">
+                <div class="steps-warp-title">步骤 1</div>
+                <div class="steps-warp-description">这是一段很长很长很长的描述性文字</div>
+            </div>
+        </div> 
+
+        <div class="steps-box">
+            <div class="steps-warp-head">
+                <div class="steps-warp-line">
+                    <i class="steps-warp-line-inner"></i>
+                </div>
+                <div class="steps-warp-iconortext">2</div>
+            </div>
+            <div class="steps-warp-main">
+                <div class="steps-warp-title">步骤 1</div>
+                <div class="steps-warp-description">这是一段很长很长很长的描述性文字</div>
+            </div>
+        </div> 
+
+        <div class="steps-box">
+            <div class="steps-warp-head">
+                <div class="steps-warp-line">
+                    <i class="steps-warp-line-inner"></i>
+                </div>
+                <div class="steps-warp-iconortext">3</div>
+            </div>
+            <div class="steps-warp-main">
+                <div class="steps-warp-title">步骤 1</div>
+                <div class="steps-warp-description">这是一段很长很长很长的描述性文字</div>
+            </div>
+        </div> 
+
+    </div>
+
+    <div style="text-align: center; margin-top:30px;">
+        <button class="btn btn-blue">下一步</button>
+    </div>
+ 
+
+</body>
+</html>
+<script>
+
+    var RainierSteps = {
+        option:{
+            el:'',
+        },
+        init:function(option){
+            console.log(this);
+            this.option.el = option.el
+            this.ResizeStepBox(option.el);
+            this.ChangeStepActive(option.active);
+        },
+        ResizeStepBox:function(el){
+            var el = el+' '+'.steps-box';
+            var len =  document.querySelectorAll(el).length;
+            document.querySelectorAll(el).forEach(function(item){
+                item.style.width = 100/len + '%';
+            })
+        },
+        ChangeStepActive:function(active,el){       
+           var el = el||this.option.el;
+           var num = parseInt(active?active:document.querySelector(el).getAttribute('active')); 
+           var box = el+' '+'.steps-box';
+           var len = document.querySelectorAll(box).length;
+
+           for(var i = 0;i<len;i++){
+
+               var index = i+1;
+               var item = document.querySelectorAll(box)[i];
+
+               item.classList.remove('success')
+               item.classList.remove('active')
+               item.querySelector('.steps-warp-iconortext').innerHTML = index;   
+
+                if(index < num){
+                    var icon = '<i class="fa fa-check-circle"></i>';
+                    item.classList.add('success')
+                    item.querySelector('.steps-warp-iconortext').innerHTML = icon;                 
+                }
+                if(index == num){
+                    item.classList.remove('success')
+                    item.classList.add('active')
+                    item.querySelector('.steps-warp-iconortext').innerHTML = index;         
+                }
+            }
+
+        }
+    }     
+
+    // 调用方法
+  RainierSteps.init({ el:'#step1',});
+
+    var stepsnum = 1;
+    document.querySelector('.btn').addEventListener('click',changeStepFn)
+    // document.querySelector('.btn').addEventListener('click',decounce(changeStepFn,100))
+
+    function changeStepFn(){
+        stepsnum++;
+        if(stepsnum>4){
+            stepsnum = 1;
+        }
+        RainierSteps.ChangeStepActive(stepsnum)           
+    }
+
+    //函数防抖 防止多次点击 扩展（函数节流）
+    function decounce(fn, delay) {
+        var timer;
+        return function() {
+            clearTimeout(timer)
+            timer = setTimeout(fn,delay)
+        }
+    }
+
+</script>

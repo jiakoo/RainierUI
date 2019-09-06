@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../common/common.css">
+    <link rel="stylesheet" href="rate.css">
+</head>
+<body>
+    <div style="margin:15px;">
+        <p>普通效果</p>
+        <div class="rate-warp" id="rate1"></div>        
+        <div style="margin: 15px"></div>
+        <p>不可选中效果</p>
+        <div class="rate-warp" id="rate2"></div>
+
+    </div>
+</body>
+</html>
+<script>
+
+    var RainierRate = function() {
+        this.el = '',
+        this.readOnly=false,
+        this.init=function(option){
+            this.el = option.el;
+            this.readOnly = option.readOnly;
+            this.creatRate();
+            this.setRate(this.el,parseFloat(option.score));
+            this.activeRate();
+
+            var el = this.el +' '+'input[name="rate"]';
+            document.querySelector(el).value = option.score;
+        },
+        this.creatRate=function(){           
+            var html =  ' <span class="rate-item">'+
+                            '<i class="rate-icon fa fa-star"></i>'+
+                        '</span>'+
+                        ' <span class="rate-item">'+
+                            '<i class="rate-icon fa fa-star"></i>'+
+                        '</span>'+
+                        ' <span class="rate-item">'+
+                            '<i class="rate-icon fa fa-star"></i>'+
+                        '</span>'+
+                        ' <span class="rate-item">'+
+                            '<i class="rate-icon fa fa-star"></i>'+
+                        '</span>'+
+                        ' <span class="rate-item">'+
+                            '<i class="rate-icon fa fa-star"></i>'+
+                        '</span>'+
+                        '<input type="hidden" name="rate" value="0">';
+
+            document.querySelector(this.el).innerHTML = html;    
+        },
+        this.setRate=function(el,len){
+            var el = this.el +' '+'input[name="rate"]';
+            var len = len || parseFloat(document.querySelector(el).value);
+            var itemStr = this.el +' '+'.rate-item';
+            var item = document.querySelectorAll(itemStr);
+            for(var j = 0; j<len;j++){    
+                var child = item[j];
+                child.classList.add('active');
+            }
+        },
+        this.clearRate = function(el){
+            var el = el || this.el+' '+'.rate-item';
+            var len  = document.querySelectorAll(el).length;
+            for(var j = 0; j<len;j++){    
+                var child = document.querySelectorAll(el)[j];                                      
+                child.classList.remove('active');
+            }
+        },
+        this.activeRate =function(){
+            if(this.readOnly){
+                document.querySelector(this.el).classList.add('readOnly');
+                return;
+            }
+            var el = this.el +' '+'.rate-item';
+            var len = document.querySelectorAll(el).length;
+            var _this = this;
+            for(var i = 0; i<len; i++){
+                var item = document.querySelectorAll(el)[i];
+                (function(){     
+                    var _i= i; 
+                    item.addEventListener('mouseover',function(){
+                        _this.clearRate();
+                        _this.setRate(_this.el,_i+1)
+                    })   
+                    item.addEventListener('mouseout',function(){
+                        _this.clearRate();
+                        _this.setRate(_this.el)
+                    })
+                    item.addEventListener('click',function(){
+                        var el = _this.el +' '+'input[name="rate"]';
+                        document.querySelector(el).value = _i+1;
+                        _this.setRate(_this.el,_i+1);
+                    })
+                })(i)      
+            }
+        }
+    }   
+
+    new RainierRate().init({
+        el:'#rate1',
+        score:3
+    });
+
+    new RainierRate().init({
+        el:'#rate2',
+         readOnly:true,
+         score:2
+    });
+
+</script>

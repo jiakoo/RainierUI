@@ -1,0 +1,28 @@
+.rate-warp{
+    height: 20px;
+    line-height: 1;
+    user-select: none;
+}
+.rate-item{
+    cursor: pointer;
+    font-size: 0;
+    vertical-align: middle;
+}
+.rate-item,
+.rate-icon{
+    display: inline-block;
+    position: relative;
+}
+.rate-icon{
+    font-size: 16px;
+    margin-right: 6px;
+    color: #c0c4cc;
+    transition: .3s; 
+}
+.rate-warp:not(.readOnly).rate-item:hover .rate-icon{
+    transform: scale(1.5);
+    color:#f7ba2a;
+}
+.rate-item.active .rate-icon{
+    color:#f7ba2a;
+}

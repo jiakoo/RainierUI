@@ -1,0 +1,115 @@
+.steps-warp{
+    display: flex;
+    white-space: nowrap;
+}
+.steps-warp .steps-box{
+    position: relative;
+    display: inline-block;
+}
+.steps-warp-head{
+    position: relative;
+    width: 100%;
+
+    color: #c0c4cc;
+    border-color: #c0c4cc;
+}
+
+.steps-box.active .steps-warp-head{
+    color: #303133;
+    border-color: #303133;
+}
+.steps-box.success .steps-warp-head{
+    color: #409eff;
+    border-color: #409eff;
+}
+.steps-box.success .steps-warp-line-inner{
+    width: 100%;
+}
+.steps-box.success .steps-warp-iconortext{
+    border: 0;
+}
+.steps-box.success .steps-warp-iconortext i{
+    font-size: 26px;
+}
+
+.steps-warp-line{
+    position: absolute;
+    border-color: inherit;
+    background-color: #c0c4cc;
+    height: 2px;
+    top: 11px;
+    left: 0;
+    right: 0;
+
+    left: 50%;
+    right: -50%;
+}
+.steps-warp-line-inner{
+    display: block;
+    border: 1px solid;
+    border-color: inherit;
+    transition: .15s ease-out;
+    box-sizing: border-box;
+    width: 0;
+    height: 0;
+}
+
+.steps-warp-iconortext{
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background: #fff;
+    transition: .15s ease-out;
+    border-radius: 50%;
+    border: 2px solid;
+    border-color: inherit;
+
+    user-select: none;
+    text-align: center;
+    font-weight: 700;
+    line-height: 1;
+    color: inherit;
+}
+
+.steps-warp .steps-box:last-child{
+    flex-basis: auto!important;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+.steps-warp .steps-box:last-child .steps-warp-line {
+    display: none;
+}
+.steps-warp .steps-warp-head,
+.steps-warp  .steps-warp-main{
+    text-align: center;
+}
+
+.steps-warp-title {
+    font-size: 16px;
+    line-height: 38px;
+    color:#c0c4cc;
+}
+.steps-warp-description{
+    margin-top: -5px;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 400;
+    white-space: normal;
+    color:#c0c4cc;
+}
+
+.steps-box.success .steps-warp-title,
+.steps-box.success .steps-warp-description{
+    color: #409eff;
+}
+
+.steps-box.active .steps-warp-title,
+.steps-box.active .steps-warp-description{
+    color: #303133;
+}

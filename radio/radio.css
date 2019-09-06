@@ -73,9 +73,8 @@
     color: #409eff;
 }
 .radio-border .radio-warp{
-    padding: 10px 20px 0 10px;
+    padding: 10px 15px;
     border-radius: 4px;
-    height: 36px;
     border: 1px solid #ddd;
 }
 
