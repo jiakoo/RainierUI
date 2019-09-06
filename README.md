@@ -13,4 +13,11 @@
 ![Image text](./readme/radio.png)
 ## button(按钮)组件：
 ![Image text](./readme/button.png)
+## rate（星级评分）组件：
+![Image text](./readme/rate.png)
+## progress（进度条）组件：
+![Image text](./readme/progress.png)
+## steps（步骤条）组件：
+![Image text](./readme/steps.png)
+
 ## 以及第一个动图（输入框）   哈哈哈哈哈
