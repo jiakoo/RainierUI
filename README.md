@@ -17,6 +17,8 @@
 ![Image text](./readme/rate.png)
 ## progress（进度条）组件：
 ![Image text](./readme/progress.png)
+## （滑块）组件：
+![Image text](./readme/range.png)
 ## steps（步骤条）组件：
 ![Image text](./readme/steps.png)
 
