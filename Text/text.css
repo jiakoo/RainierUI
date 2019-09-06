@@ -16,6 +16,7 @@
     width: 100%;
     font-size: 14px;
 }
+
 .form-control:hover{
     border-color: #c0c4cc;
 }
